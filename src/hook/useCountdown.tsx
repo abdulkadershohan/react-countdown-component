@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
-import { ICountdown, ITimer } from "../interface";
-
-
+type ICountdown = {
+    date: string | number | Date
+};
+type ITimer = {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+};
 export default function useCountdown(date: ICountdown["date"]) {
     const [remainingTime, setRemainingTime] = useState("");
     const [days, setDays] = useState(0);
