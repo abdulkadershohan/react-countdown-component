@@ -1,10 +1,11 @@
-import { Stack, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
+import Countdown from './components/Countdown'
 
 function App() {
+  const expiresAt = new Date().getTime() + 1000 * 60 * 60
   return (
     <Stack>
-      <Typography variant="h1">Hello Vite + React!</Typography>
-
+      <Countdown expiresAt={expiresAt} />
     </Stack>
   )
 }
