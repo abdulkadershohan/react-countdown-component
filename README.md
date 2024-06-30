@@ -1,30 +1,98 @@
-# React + TypeScript + Vite
+<!-- TABLE OF CONTENTS -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Parameters](#parameters)
+- [Return Values](#return-values)
+- [License](#license)
+- [Author](#author)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# useCountdown React Hook
+`useCountdown` is a custom React hook designed to create countdown timers based on a specified date.
 
-## Expanding the ESLint configuration
+<!--Installation -->
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
+You can install react-countdown-component-hooks using npm or yarn:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+Install dev dependencies
+   ```sh
+    npm i react-countdown-component-hooks 
+    # or
+    yarn add react-countdown-component-hooks
+   ```
+
+## Usage
+
+* Example -1
+```sh
+import { useCountdown } from 'react-countdown-component-hooks'
+
+function App() {
+  const expiresAt = new Date().getTime() + 1000 * 60 * 60 * 24 * 7
+  const { remainingTime } = useCountdown(expiresAt)
+  return (
+    <div>
+      {remainingTime}
+    </div>
+  )
 }
+
+export default App
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+* Example -2
+```sh
+import { useCountdown } from 'react-countdown-component-hooks'
+
+function App() {
+  const expiresAt = new Date().getTime() + 1000 * 60 * 60 * 24 * 7
+  const { days, hours, minutes, remainingTime, seconds } = useCountdown(expiresAt)
+  return (
+    <div>
+      <p>Time Remaining: {remainingTime}</p>
+      <p>Days: {days}, Hours: {hours}, Minutes: {minutes}, Seconds: {seconds}</p>
+    </div>
+  )
+}
+
+export default App
+
+
+```
+
+
+## Parameters
+* date (string | number | Date): The target date for the countdown timer.
+
+## Return Values
+* days (number): The number of days remaining.
+* hours (number): The number of hours remaining.
+* minutes (number): The number of minutes remaining.
+* seconds (number): The number of seconds remaining.
+* remainingTime (string): The remaining time in the format "DD:HH:MM:SS".
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Author
+<img src="https://avatars.githubusercontent.com/u/56482597?v=4" width="200" style="border-radius:50%"/>
+
+
+ - [MD. Abdul Kader](
+    https://www.linkedin.com/in/abdulkadershohan/)
+        
+    ```
+    Email: abdulkadirshohan@gmail.com
+    ```
+    ```
+    Protfolio: https://dev-shohan.netlify.app/
+    ```
+    ```
+    https://github.com/abdulkadershohan
+
+    ```

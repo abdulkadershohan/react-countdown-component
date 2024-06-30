@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
-import { ICountdown, ITimer } from "../interface";
 
+type ICountdown = {
+    date: string | number | Date
+};
+type ITimer = {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+};
 
-export default function LiveClock({ expiresAt }: ICountdown) {
+export default function useCountdown(date: ICountdown["date"]) {
     const [remainingTime, setRemainingTime] = useState("");
+    const [days, setDays] = useState(0);
+    const [hours, setHours] = useState(0);
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] = useState(0);
 
     const getTwoDigit = (number: number) => {
         return number > 9 ? number : `0${number}`;
@@ -16,12 +28,15 @@ export default function LiveClock({ expiresAt }: ICountdown) {
         const remSeconds = `${getTwoDigit(seconds)}`;
 
         const time = remDays + remHours + remMinuts + remSeconds;
-
+        setDays(days);
+        setHours(hours);
+        setMinutes(minutes);
+        setSeconds(seconds);
         setRemainingTime(time);
     };
 
     useEffect(() => {
-        const countDownDate = new Date(expiresAt).getTime();
+        const countDownDate = new Date(date as string).getTime();
         // Update the count down every 1 second
         const x = setInterval(() => {
             // Get today's date and time
@@ -45,11 +60,15 @@ export default function LiveClock({ expiresAt }: ICountdown) {
             if (distance < 0) {
                 clearInterval(x);
                 setRemainingTime("Expired");
+                setDays(0);
+                setHours(0);
+                setMinutes(0);
+                setSeconds(0);
             }
         }, 1000);
 
         return () => clearInterval(x);
-    }, [expiresAt]);
+    }, [date]);
 
-    return remainingTime
+    return { days, hours, minutes, remainingTime, seconds };
 }
