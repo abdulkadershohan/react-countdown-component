@@ -1,6 +1,5 @@
 type ICountdown = {
-    expiresAt: string | number | Date;
-    rest?: unknown;
+    date: string | number | Date
 };
 type ITimer = {
     days: number;
