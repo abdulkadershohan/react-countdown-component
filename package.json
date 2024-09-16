@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/abdulkadershohan/react-countdown-component#readme",
   "author": "MD. Abdul Kader",
-  "license": "ISC",
+  "license": "MIT",
   "description": "useCountdown is a custom React hook designed to create countdown timers based on a specified date.",
   "peerDependencies": {
     "react": "^18.3.1",
